@@ -39,7 +39,7 @@ const HeroSection = () => {
                     </p>
                     <div>
                         <button
-                            className={`px-6 py-3 max-lg:w-full w-fit rounded-full mr-4 bg-white hover:bg-slate-200 text-black bg-gradient-to-br ${gradient}`}>Hit
+                            className={`px-6 py-3 max-lg:w-full w-fit rounded-full mr-4 bg-white hover:bg-slate-200 text-black bg-gradient-to-br ${gradient}`}>Hire
                             Me
                         </button>
                         <button
