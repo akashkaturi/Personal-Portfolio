@@ -8,7 +8,7 @@ const HeroSection = () => {
     const gradient2 = `from-[#2980B9] via-[#6DD5FA] to-[#FFFFFF]`
     return (
         <section>
-            <div className={`grid grid-cols-1 lg:grid-cols-12 `}>
+            <div className={`grid grid-cols-1 lg:grid-cols-12`}>
                 <div className={`col-span-7 place-self-center max-lg:text-center text-left`}>
                     <h1 className={`text-6xl max-lg:text-4xl mb-4 font-extrabold`}>
                         <span
@@ -39,7 +39,7 @@ const HeroSection = () => {
                     </p>
                     <div>
                         <button
-                            className={`px-6 py-3 max-lg:w-full w-fit rounded-full mr-4 bg-white hover:bg-slate-200 text-black bg-gradient-to-br ${gradient}`}>Hit
+                            className={`px-6 py-3 max-lg:w-full w-fit rounded-full mr-4 bg-white hover:bg-slate-200 text-black bg-gradient-to-br ${gradient}`}>Hire
                             Me
                         </button>
                         <button
