@@ -1,7 +1,9 @@
 "use client"
-import {useState} from "react";
+import {useState, useRef} from "react";
 import ProjectCard from "@/components/ProjectCard";
 import ProjectTag from "@/components/ProjectTag";
+
+import {motion, useInView} from "framer-motion";
 
 const projectsData = [
     {
@@ -60,35 +62,54 @@ const projectsData = [
     },
 ];
 const ProjectSection = () => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, {once: true})
     const [tag, setTag] = useState("All")
-    const filteredProjects=projectsData.filter((project)=>project.tag.includes(tag))
+    const filteredProjects = projectsData.filter((project) => project.tag.includes(tag))
     const handleTagChange = (newTag) => setTag(newTag)
+    const cardVariants = {
+        initial: {y: 50, opacity: 0},
+        animate: {y: 0, opacity: 1},
+    }
     return (
-        <section id={`projects`}>
+        <section ref={ref} id={`projects`} >
             <h2 className={`text-center text-4xl font-bold text-white mt-4`}>My Projects</h2>
             <div className={`text-white flex flex-row justify-center items-center gap-2 py-6`}>
-                <ProjectTag
-                    onClick={handleTagChange}
-                    name={`All`}
-                    isSelected={tag === "All"}
-                />
-                <ProjectTag
-                    onClick={handleTagChange}
-                    name={`Web`}
-                    isSelected={tag === "Web"}
-                />
-                <ProjectTag
-                    onClick={handleTagChange}
-                    name={`Mobile`}
-                    isSelected={tag === "Mobile"}
-                />
+                <div className="flex items-center"> {/* Adjust max-width as needed */}
+                    <ProjectTag
+                        onClick={handleTagChange}
+                        name={`All`}
+                        isSelected={tag === "All"}
+                    />
+                    <ProjectTag
+                        onClick={handleTagChange}
+                        name={`Web`}
+                        isSelected={tag === "Web"}
+                    />
+                    <ProjectTag
+                        onClick={handleTagChange}
+                        name={`Mobile`}
+                        isSelected={tag === "Mobile"}
+                    />
+                </div>
             </div>
-            <div className={`grid gap-8 max-lg:gap-12 grid-cols-3 max-lg:grid-cols-1`}>
-                {filteredProjects.map((project) => <ProjectCard key={project.id} title={project.title}
-                                                            description={project.description}
-                                                            imageURL={project.image} gitURL={project.gitUrl}
-                                                            previewURL={project.previewUrl}/>)}
-            </div>
+            <ul ref={ref} className={`grid gap-8 max-lg:gap-12 grid-cols-3 max-lg:grid-cols-1`}>
+                {filteredProjects.map((project, index) => {
+                    return (
+                        <motion.li key={project.id} variants={cardVariants} initial={`initial`}
+                                   animate={isInView ? "animate" : "initial"}
+                                   transition={{duration: 0.4, delay: index * 0.4}}
+                        >
+                            <ProjectCard
+                                title={project.title}
+                                description={project.description}
+                                imageURL={project.image} gitURL={project.gitUrl}
+                                previewURL={project.previewUrl}
+                            />
+                        </motion.li>
+                    )
+                })}
+            </ul>
         </section>
     )
 }
