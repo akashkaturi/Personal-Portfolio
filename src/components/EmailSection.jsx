@@ -37,7 +37,7 @@ const EmailSection = () => {
     return (
         <section className={`grid grid-cols-2 max-lg:my-12 py-24 gap-4 relative`}>
             <div
-                className={`bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sky-900 to-transparent rounded-full blur-lg h-80 w-80 z-0 absolute lg-max:top-3/4 top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2`}>
+                className={`bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full blur-lg h-80 w-80 z-0 absolute lg-max:top-3/4 top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2`}>
 
             </div>
             <div>
@@ -94,7 +94,7 @@ const EmailSection = () => {
                         />
                     </div>
                     <button type={`submit`}
-                            className={`bg-sky-500 hover:bg-sky-600 font-medium py-2.5 px-5 rounded-lg w-full`}>Send
+                            className={`bg-primary-500 hover:bg-primary-600 font-medium py-2.5 px-5 rounded-lg w-full`}>Send
                         Message
                     </button>
                     {emailSubmitted && (
